@@ -1,0 +1,291 @@
+:root {
+  --primary: #8B0000;          /* cor da logo – bordo/marrom avermelhado escuro */
+  --primary-dark: #5c0000;     /* tom mais escuro para hover */
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --error: #dc3545;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Banner */
+.header {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.header img {
+  width: 100%;
+  max-width: 620px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+/* Container principal – espaçamento reduzido no topo */
+.container {
+  max-width: 620px;
+  margin: 1rem auto 4rem; /* reduzido para ficar próximo do banner */
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* Texto introdutório simples – cor da logo */
+.intro-text {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary); /* cor bordo da logo */
+  margin: 1rem 0 1.8rem;
+}
+
+/* Formulário */
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.95rem 1.1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139,0,0,0.12); /* sombra na cor bordo */
+}
+
+.file-group input[type="file"] { display: none; }
+
+.file-group label {
+  display: block;
+  background: #f8f9fa;
+  padding: 1rem;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.file-group label:hover {
+  border-color: var(--primary);
+  background: rgba(139,0,0,0.05);
+}
+
+.file-name {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Botão – cor da logo (bordo) */
+#submitBtn {
+  width: 100%;
+  padding: 1.2rem;
+  background: var(--primary); /* cor da logo */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 12px rgba(139,0,0,0.25);
+}
+
+#submitBtn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139,0,0,0.35);
+}
+
+/* Redes sociais */
+.social-section {
+  padding: 2rem 0 1rem;
+  text-align: center;
+  background: var(--bg);
+}
+
+.social h4 {
+  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.social-icons a i {
+  font-size: 3rem;
+  color: #444;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover i {
+  color: var(--primary);
+  transform: scale(1.2);
+}
+
+/* Rodapé claro */
+.footer {
+  background: var(--bg);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.footer .copyright {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.footer .legal {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.footer .legal a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.footer .legal a:hover {
+  color: var(--primary);
+}
+
+/* Overlay e Loader */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+.loader {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  width: 60px; height: 60px;
+  border: 6px solid rgba(139,0,0,0.2); /* cor da logo */
+  border-top: 6px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+  z-index: 1100;
+}
+
+@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1200;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  color: var(--text);
+}
+
+#modal-icon {
+  font-size: 5rem;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.success #modal-icon { color: var(--success); }
+.error   #modal-icon { color: var(--error); }
+
+#modal-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+#modal-text {
+  font-size: 1.05rem;
+  margin-bottom: 1.8rem;
+  color: var(--muted);
+}
+
+#modal-close {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 1rem 2.5rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.1rem;
+}
+
+#modal-close:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header img { max-width: 100%; max-height: none; border-radius: 0; margin: 0; }
+  .container { margin-top: 1rem; padding: 0 1rem; }
+  .intro-text { margin: 0.5rem 0 1.5rem; font-size: 1.3rem; }
+  .social-icons { gap: 2rem; }
+  .social-icons a i { font-size: 2.6rem; }
+}

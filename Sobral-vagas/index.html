@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobral Vagas – Envio de Currículo</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header class="header">
+    <img src="assets/header.png" alt="Sobral Vagas" loading="lazy">
+  </header>
+
+  <main class="container">
+    <p class="intro-text">Preencha seus dados</p>
+
+    <form id="cvForm" novalidate>
+      <div class="form-group">
+        <label for="nome">Nome completo *</label>
+        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone (WhatsApp) *</label>
+        <input type="tel" id="telefone" name="telefone" required placeholder="(88) 99999-9999">
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail *</label>
+        <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+      </div>
+
+      <div class="form-group">
+        <label for="vaga">Vaga pretendida *</label>
+        <input type="text" id="vaga" name="vaga" required placeholder="Ex: Vendedor, Auxiliar Administrativo...">
+      </div>
+
+      <div class="form-group file-group">
+        <label for="curriculo">Currículo (PDF) *</label>
+        <input type="file" id="curriculo" name="curriculo" accept=".pdf" required>
+        <span class="file-name">Nenhum arquivo selecionado</span>
+      </div>
+
+      <button type="submit" id="submitBtn">Enviar Currículo <i class="fas fa-paper-plane"></i></button>
+    </form>
+  </main>
+
+  <section class="social-section">
+    <div class="social">
+      <h4>Siga-nos</h4>
+      <div class="social-icons">
+        <a href="https://instagram.com/sobralvagas" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://instagram.com/sobralvagas" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/sobralvagas" target="_blank" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="copyright">
+      <p>© 2026 Agência Sobral Vagas.<br>Todos os direitos reservados.</p>
+    </div>
+    <div class="legal">
+      <a href="#">Termos de Serviço</a> • 
+      <a href="#">Privacidade</a>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="loader" id="loader"></div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span id="modal-icon"></span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+      <button id="modal-close">Fechar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
