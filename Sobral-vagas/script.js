@@ -22,12 +22,17 @@ telefone.addEventListener('input', (e) => {
   e.target.value = v;
 });
 
-// Nome do arquivo
+// Nome do arquivo + tamanho aproximado
 fileInput.addEventListener('change', () => {
-  fileNameSpan.textContent = fileInput.files[0]?.name || 'Nenhum arquivo selecionado';
+  if (fileInput.files[0]) {
+    const sizeMB = (fileInput.files[0].size / 1024 / 1024).toFixed(2);
+    fileNameSpan.textContent = `${fileInput.files[0].name} (${sizeMB} MB)`;
+  } else {
+    fileNameSpan.textContent = 'Nenhum arquivo selecionado';
+  }
 });
 
-// Fecha modal (clique fora ou no botão)
+// Fecha modal
 overlay.addEventListener('click', () => {
   modal.style.display = 'none';
   overlay.style.display = 'none';
@@ -38,7 +43,7 @@ modalClose.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// Modal profissional
+// Modal
 function showModal(type, title, message) {
   modal.className = 'modal ' + type;
 
@@ -57,7 +62,7 @@ function showModal(type, title, message) {
   }
 
   modalTitle.textContent = title;
-  modalText.textContent = message;
+  modalText.innerHTML = message;  // innerHTML para link
 
   modal.style.display = 'flex';
   overlay.style.display = 'block';
@@ -80,7 +85,18 @@ form.addEventListener('submit', async (e) => {
   const file = fileInput.files[0];
   if (!file) { showModal('error', 'Currículo obrigatório', 'Anexe seu currículo em PDF.'); return; }
   if (file.type !== 'application/pdf') { showModal('error', 'Formato inválido', 'Envie apenas arquivos PDF.'); return; }
-  if (file.size > 5 * 1024 * 1024) { showModal('error', 'Arquivo muito grande', 'O PDF deve ter no máximo 5MB.'); return; }
+
+  // Verificação de tamanho + link resumido
+  if (file.size > 5 * 1024 * 1024) {
+    showModal('error', 'Arquivo muito grande', 
+      'Máximo 5 MB.<br><br>' +
+      'Comprima grátis e rápido:<br>' +
+      '<strong><a href="https://www.ilovepdf.com/pt/comprimir_pdf" target="_blank" style="color: #c8102e; text-decoration: underline; font-size: 1.1rem;">' +
+      '→ Comprimir agora no iLovePDF</a></strong><br><br>' +
+      'Depois volte e envie novamente!'
+    );
+    return;
+  }
 
   // Loading
   submitBtn.disabled = true;
